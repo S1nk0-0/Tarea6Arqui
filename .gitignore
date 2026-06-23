@@ -1,0 +1,7 @@
+build/
+rv-sim
+rv-sim.exe
+*.o
+*.obj
+cmake-build-*/
+.idea/
