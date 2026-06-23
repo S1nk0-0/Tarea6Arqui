@@ -1,6 +1,6 @@
-# Simulador de RISC-V (RV32I) — HW#6 Arquitectura de Computadores
+# Simulador de RISC-V 
 
-Simulador del ISA base RISC-V de 32 bits (RV32I). Carga un binario crudo en
+Simulador de ISA base RISC-V de 32 bits . Carga un binario crudo en
 memoria, mantiene el estado arquitectural (PC, 32 registros, memoria plana
 little-endian) y permite ejecución paso por paso con inspección de registros
 y memoria desde un REPL.
@@ -49,11 +49,9 @@ Las direcciones aceptan `0x...` o decimal.
 - **Memoria paginada** (`unordered_map` de páginas de 4 KiB) para tener un
   address space de 32 bits sin reservar 4 GB.
 - **Little-endian** en todos los accesos de 16/32 bits.
-- **x0 cableado a 0**: lecturas siempre devuelven 0, escrituras se descartan.
-- **Inmediatos con extensión de signo** por tipo (I, S, B, U, J).
 - **Halt**: una instrucción `0x00000000` o un `ecall` de exit detienen la CPU.
 
-## Extras incluidos (sobre lo obligatorio)
+## Extras incluidos 
 - Desensamblador integrado (`disasm`, y se muestra en cada `step`).
 - Soporte mínimo de `ecall` estilo SPIM: `a7=1` print_int, `a7=4` print_string,
   `a7=10`/`93` exit.
@@ -62,11 +60,11 @@ Las direcciones aceptan `0x...` o decimal.
 
 Los tres programas del enunciado ya están incluidos y **verificados**:
 
-| Programa | Comando de verificación | Resultado esperado | Estado |
-|---|---|---|---|
-| riscvtest | `run` → `mem 0x64 0x67` | `19 00 00 00` (0x19=25) | ✅ |
-| quicksort | `run` → `mem 0x1000 0x101b` | `01 02 03 04 06 08 09` | ✅ |
-| árbol simétrico | `run` → `regs a0` | `a0 = 0x00000001` | ✅ |
+| Programa | Comando de verificación | Resultado esperado |
+|---|---|---|
+| riscvtest | `run` → `mem 0x64 0x67` | `19 00 00 00` (0x19=25) |
+| quicksort | `run` → `mem 0x1000 0x101b` | `01 02 03 04 06 08 09` |
+| árbol simétrico | `run` → `regs a0` | `a0 = 0x00000001` |
 
 ```
 ./rv-sim tests/riscvtest.bin
